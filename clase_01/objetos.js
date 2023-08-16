@@ -27,12 +27,13 @@ class person {
     getFullName() {
         return this.getFirstName() + " " + this.getLastName();
     };
-
+    
+    constructor(firstName, lastName, age) {
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setAge(age);
+    }
 }
 
-const matias = new person();
-    matias.setFirstName('Matías Agustín');
-    matias.setLastName('Quinteros');
-    matias.setAge(23);
-
-    console.log(matias.getFullName(), matias.getAge());
+const matias = new person(firstName = 'Matías', lastName = 'Quinteros', age = 23);
+    console.log(matias);
