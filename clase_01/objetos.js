@@ -1,23 +1,38 @@
-const persona = {
-    firstName: 'Matías',
-    lastName: 'Quinteros',
-    age: 23,
+class person {
+    firstName = '';
+    lastName  = '';
+    age       = 0;
 
-    getFirstName: function () {
+    getFirstName() {
         return this.firstName
-    },
-    setFirstName: function (newFirstName) {
+    };
+    setFirstName(newFirstName) {
         this.firstName = newFirstName;
-    },
-    getLastName: function () {
+    };
+
+    getLastName() {
         return this.lastName
-    },
-    setLastName: function (newLastName) {
+    };
+    setLastName(newLastName) {
         this.lastName = newLastName
-    },
-    getFullName: function () {
+    };
+
+    getAge() {
+        return this.age
+    };
+    setAge(newAge) {
+        this.age = newAge
+    };
+
+    getFullName() {
         return this.getFirstName() + " " + this.getLastName();
-    }
+    };
+
 }
 
-console.log(persona.getFullName());
+const matias = new person();
+    matias.setFirstName('Matías Agustín');
+    matias.setLastName('Quinteros');
+    matias.setAge(23);
+
+    console.log(matias.getFullName(), matias.getAge());
