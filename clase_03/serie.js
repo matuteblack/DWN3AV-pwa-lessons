@@ -1,11 +1,11 @@
 class Serie {
     title  = '';
-    imgUrl = '';
     year   = '';
 
-    constructor() {
-
-    }
+    constructor(title, year) {
+        this.setTitle(title);
+        this.setYear(year);
+    }   
 
     setTitle(title) {
         this.title = title;
@@ -14,14 +14,7 @@ class Serie {
         return this.title;
     }
 
-    setImgUrl(imgUrl) {
-        this.imgUrl= imgUrl;
-    }
-    getImgUrl() {
-        return this.imgUrl;
-    }
-
-    setYear() {
+    setYear(year) {
         this.year = year;
     }
     getYear() {
