@@ -1,4 +1,4 @@
-class person {
+class Person {
     firstName = '';
     lastName  = '';
     age       = 0;
@@ -35,5 +35,5 @@ class person {
     }
 }
 
-const matias = new person(firstName = 'Matías', lastName = 'Quinteros', age = 23);
-    console.log(matias);
+const matias = new Person(firstName = 'Matías', lastName = 'Quinteros', age = 23);
+console.log(matias);
