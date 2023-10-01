@@ -1,9 +1,12 @@
-let arr1 = [
-    'uno',
-    'dos'
-];
-let arr2 = new Set(arr1);
+// timeout integrado
+setTimeout(() => {
+    console.log('...2 segundos después');
+}, 2000);
 
-let arr3 = [...arr2];
+// timeout armado desde fuera
+const tiempo_retraso = 3000;
+    // función callback
+const action = () => console.log('...3 segundos después');
 
-console.log(arr1, arr2, arr3);
+setTimeout(action, tiempo_retraso);
+

@@ -16,5 +16,4 @@ class SeriesApp {
             </div>`)
             ).join('')
     }
-
 }
