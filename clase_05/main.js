@@ -64,8 +64,16 @@ const peopleList = [
 
 const valid = true;
 
-const crearPersona = (people) => {
-    return `${people.title} ${people.firstName} ${people.lastName}`
+const generarNombre = (person) => {
+    return `${person.title} ${person.firstName} ${person.lastName}`
+}
+
+const crearPersona = (person) => {
+    const {age, ...other} = person;
+    return {
+        age,
+        name: generarNombre(other)
+    }
 }
 
 const peoplePromise = new Promise((done, reject) => {
@@ -79,15 +87,7 @@ const peoplePromise = new Promise((done, reject) => {
 })
 
 peoplePromise
-    .then((people) => people.map(
-        (person) => {
-            const {age, ...other} = person;
-            return {
-                age,
-                name: crearPersona(other)
-            }
-        }
-    ))
+    .then((people) => people.map(crearPersona))
     .then(people => console.log(people))
 
 
