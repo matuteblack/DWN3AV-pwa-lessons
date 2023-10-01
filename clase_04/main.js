@@ -38,11 +38,15 @@ const createCard = (paragraph) =>
 
 const infoServer = new Promise((done) => {
     setTimeout(() => {
-        done(12);
+        done(series);
     }, tiempo_retraso);
 });
 
 infoServer
-    .then(value => {
-        console.log(value);
-    })
+    // .then(lista => lista.map(
+    //     (serie) => capitalize()
+    // ))
+    .then(lista => lista.map(serie => (capitalize(serie))))
+    .then(lista => lista.map(serie => (createParagraph(serie))))
+    .then(lista => lista.map(serie => (createCard(serie))))
+    .then(lista => console.log(lista.join('')))
