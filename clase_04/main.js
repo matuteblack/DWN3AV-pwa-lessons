@@ -9,9 +9,32 @@ const tiempo_retraso = 2000;
 const action = () => console.log('...3 segundos después');
 
 
-// Promesas
-
+// App: generar tarjetas de series
 console.log('Comienzo de app...');
+
+const series = [
+    'vikings',
+    'sex education',
+    'you',
+    'the boys',
+    "grey's anatomy"
+]
+
+const capitalize = (word) => {
+    const lower = word.toLowerCase();
+    return word.charAt(0).toUpperCase() + lower.slice(1);
+}
+
+const createParagraph = (string) => `<p>${string}</p>`;
+
+const createCard = (paragraph) =>
+`<div>
+    <h1>Serie</h1>
+    ${paragraph}
+</div>`;
+
+
+// Promesas
 
 const infoServer = new Promise((done) => {
     setTimeout(() => {
