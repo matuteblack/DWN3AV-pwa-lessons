@@ -43,10 +43,7 @@ const infoServer = new Promise((done) => {
 });
 
 infoServer
-    // .then(lista => lista.map(
-    //     (serie) => capitalize()
-    // ))
-    .then(lista => lista.map(serie => (capitalize(serie))))
-    .then(lista => lista.map(serie => (createParagraph(serie))))
-    .then(lista => lista.map(serie => (createCard(serie))))
+    .then(lista => lista.map(capitalize))
+    .then(lista => lista.map(createParagraph))
+    .then(lista => lista.map(createCard))
     .then(lista => console.log(lista.join('')))
