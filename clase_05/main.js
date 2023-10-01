@@ -75,10 +75,20 @@ const peoplePromise = new Promise((done, reject) => {
         } else {
             reject({messaje: 'invalid request'});
         }
-    }, 2000);
+    }, 1000);
 })
 
-peoplePromise.then((people => console.log(people)))
+peoplePromise
+    .then((people) => people.map(
+        (person) => {
+            const {age, ...other} = person;
+            return {
+                age,
+                name: crearPersona(other)
+            }
+        }
+    ))
+    .then(people => console.log(people))
 
 
 
