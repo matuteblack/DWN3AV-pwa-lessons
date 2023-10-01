@@ -64,6 +64,10 @@ const peopleList = [
 
 const valid = true;
 
+const crearPersona = (people) => {
+    return `${people.title} ${people.firstName} ${people.lastName}`
+}
+
 const peoplePromise = new Promise((done, reject) => {
     setTimeout(() => {
         if (valid) {
@@ -75,6 +79,7 @@ const peoplePromise = new Promise((done, reject) => {
 })
 
 peoplePromise.then((people => console.log(people)))
+
 
 
 
