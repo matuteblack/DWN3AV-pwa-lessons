@@ -79,8 +79,12 @@ const crearPersona = (person) => {
 const traerDatosDeAPI = () => {
     const url = "https://randomuser.me/api/?results=10";
     fetch(url)
-        .then(data => data.json())
-        .then(data => console.log(data))
+        .then(datos => datos.json())
+        .then(respuesta => {
+            const {info, results} = respuesta;
+            return results;
+        })
+        .then(lista => console.log(lista))
 }
 
 const peoplePromise = new Promise((done, reject) => {
