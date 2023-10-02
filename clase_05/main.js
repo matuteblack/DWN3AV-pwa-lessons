@@ -62,7 +62,7 @@ const peopleList = [
     }
 ];
 
-const valid = false;
+const valid = true;
 
 const generarNombre = (person) => {
     return `${person.title} ${person.firstName} ${person.lastName}`
@@ -74,6 +74,13 @@ const crearPersona = (person) => {
         age,
         name: generarNombre(other)
     }
+}
+
+const traerDatosDeAPI = () => {
+    const url = "https://randomuser.me/api/?results=10";
+    fetch(url)
+        .then(data => data.json())
+        .then(data => console.log(data))
 }
 
 const peoplePromise = new Promise((done, reject) => {
@@ -92,53 +99,6 @@ peoplePromise
         console.error(error);
         return [{firstName: 'User', lastName: 'Name', age: 21}]
     })
-    .then(people => console.log(people))
+    // .then(people => console.log(people))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const valid = false;
-
-// const generateName = (people) => {
-//     return `${people.title} ${people.firstName} ${people.lastName}`;
-// }
-// const generatePerson = (person) => {
-//     const {age, ...other} = person;
-//     return {
-//         age,
-//         name: generateName(other)
-//     }
-// }
-
-
-// const peoplePromise = new Promise((done, reject) => {
-//     setTimeout(() => {
-//         if(valid) {
-//             done(peopleList);
-//         } else {
-//             reject({message: 'invalid request'});
-//         }
-//     }, 3000);
-// });
-
-// peoplePromise
-//     .then((people) => people.map(generatePerson))
-//     .catch((error) => {
-//         console.error(error)
-//         return []
-//     })
-//     .then((people) => console.log(people));
+    console.log(traerDatosDeAPI());
