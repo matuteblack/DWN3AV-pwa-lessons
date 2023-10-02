@@ -17,8 +17,8 @@ const crearPersona = (person) => {
     }
 }
 
-const traerDatosDeAPI = () => {
-    const url = `https://reqres.in/api/users?page=${getRandomIntInclusive(1, 2)}`;
+const traerDatosDeAPI = (endpoint) => {
+    const url = `https://reqres.in/api/users${endpoint}`;
     return fetch(url)
             .then(datos => datos.json())
             .then(({data}) => data)
@@ -57,13 +57,14 @@ const crearCard = ({avatar, email, name}) => `<div class="card">
 
 const content = document.getElementById('content');
 
-traerDatosDeAPI()
-    .then(people => {
-        console.log(people)
-        const template = people.map(person => crearCard(person)).join('')
-        content.innerHTML = template;
-    })
-    .catch((error) => {
-        console.error(error);
-        return [{firstName: 'User', lastName: 'Name', age: 21}]
-    })
+const renderizarPagina = async () => {    
+    const primeraPagina = await traerDatosDeAPI('?page=1');
+    const segundaPagina = await traerDatosDeAPI('?page=2');
+
+    const personas = [...primeraPagina, ...segundaPagina];
+
+    const template = personas.map(person => crearCard(person)).join('')
+    content.innerHTML = template
+}
+
+renderizarPagina();
