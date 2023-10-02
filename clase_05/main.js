@@ -85,6 +85,15 @@ const traerDatosDeAPI = () => {
             const {name, dob} = persona;
             return {name, dob}
         }))
+        .then(results => results.map((persona) => {
+            const {name, dob} = persona;
+            return {
+                age: dob.age,
+                firstName: name.first,
+                lastName: name.last,
+                title: name.title
+            }
+        }))
         .then(lista => console.log(lista))
 }
 
