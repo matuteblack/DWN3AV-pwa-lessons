@@ -80,10 +80,7 @@ const traerDatosDeAPI = () => {
     const url = "https://randomuser.me/api/?results=10";
     fetch(url)
         .then(datos => datos.json())
-        .then(respuesta => {
-            const {info, results} = respuesta;
-            return results;
-        })
+        .then(({results}) => results)
         .then(lista => console.log(lista))
 }
 
