@@ -59,11 +59,12 @@ const content = document.getElementById('content');
 
 
 
-
-
 traerDatosDeAPI()
-    // .then((people) => people.map(crearPersona))
-    .then(people => console.log(people))
+    .then(people => {
+        console.log(people)
+        const template = people.map(person => crearCard(person)).join('')
+        content.innerHTML = template;
+    })
     .catch((error) => {
         console.error(error);
         return [{firstName: 'User', lastName: 'Name', age: 21}]
