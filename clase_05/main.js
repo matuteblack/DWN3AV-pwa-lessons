@@ -78,24 +78,23 @@ const crearPersona = (person) => {
 
 const traerDatosDeAPI = () => {
     const url = "https://randomuser.me/api/?results=10";
-    fetch(url)
-        .then(datos => datos.json())
-        .then(({results}) => results)
-        .then(results => results.map((persona) => {
-            const {name, dob} = persona;
-            return {name, dob}
-        }))
-        .then(results => results.map((persona) => {
-            const {name, dob} = persona;
-            return {
-                age: dob.age,
-                firstName: name.first,
-                lastName: name.last,
-                title: name.title
-            }
-        }))
-        .then(lista => console.log(lista))
-}
+    return fetch(url)
+            .then(datos => datos.json())
+            .then(({results}) => results)
+            .then(results => results.map((persona) => {
+                const {name, dob} = persona;
+                return {name, dob}
+            }))
+            .then(results => results.map((persona) => {
+                const {name, dob} = persona;
+                return {
+                    age: dob.age,
+                    firstName: name.first,
+                    lastName: name.last,
+                    title: name.title
+                }
+            }))
+    }
 
 const peoplePromise = new Promise((done, reject) => {
     setTimeout(() => {
@@ -107,12 +106,10 @@ const peoplePromise = new Promise((done, reject) => {
     }, 1000);
 })
 
-peoplePromise
-    .then((people) => people.map(crearPersona))
+traerDatosDeAPI()
+    // .then((people) => people.map(crearPersona))
+    .then(people => console.log(people))
     .catch((error) => {
         console.error(error);
         return [{firstName: 'User', lastName: 'Name', age: 21}]
     })
-    // .then(people => console.log(people))
-
-    console.log(traerDatosDeAPI());
