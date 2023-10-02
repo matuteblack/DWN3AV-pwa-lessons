@@ -81,6 +81,10 @@ const traerDatosDeAPI = () => {
     fetch(url)
         .then(datos => datos.json())
         .then(({results}) => results)
+        .then(results => results.map((persona) => {
+            const {name, dob} = persona;
+            return {name, dob}
+        }))
         .then(lista => console.log(lista))
 }
 
