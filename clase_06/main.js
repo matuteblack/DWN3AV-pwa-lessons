@@ -1,4 +1,10 @@
 // Funciones
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const generarNombre = (person) => {
     return `${person.first_name} ${person.last_name}`
 }
@@ -12,7 +18,7 @@ const crearPersona = (person) => {
 }
 
 const traerDatosDeAPI = () => {
-    const url = "https://reqres.in/api/users";
+    const url = `https://reqres.in/api/users?page=${getRandomIntInclusive(1, 2)}`;
     return fetch(url)
             .then(datos => datos.json())
             .then(({data}) => data)
@@ -26,22 +32,17 @@ const traerDatosDeAPI = () => {
             }))
     }
 
-const crearCard = () => `<div class="card">
-<div class="card-image">
-    <figure class="image is-4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-    </figure>
-</div>
+const crearCard = ({avatar, email, name}) => `<div class="card">
 <div class="card-content">
     <div class="media">
         <div class="media-left">
             <figure class="image is-48x48">
-                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                <img src="${avatar}" alt="Placeholder image">
             </figure>
         </div>
         <div class="media-content">
-            <p class="title is-4">John Smith</p>
-            <p class="subtitle is-6">@johnsmith</p>
+            <p class="title is-4">${name}</p>
+            <p class="subtitle is-6">${email}</p>
         </div>
     </div>
     <div class="content">
@@ -55,9 +56,6 @@ const crearCard = () => `<div class="card">
 </div>`
 
 const content = document.getElementById('content');
-    content.innerHTML = crearCard();
-
-
 
 traerDatosDeAPI()
     .then(people => {
