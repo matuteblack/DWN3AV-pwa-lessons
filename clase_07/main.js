@@ -17,16 +17,17 @@ const traerDatosDeAPI = (endpoint) => {
             .then(datos => datos.json())
             .then(({data}) => data)
             .then(results => results.map((persona) => {
-                const {email, avatar, id, ...resto} = persona;
+                const {avatar, id, ...resto} = persona;
                 return {
                     name: generarNombre(resto),
-                    email,
                     avatar,
                     id
                 }
             }))
     }
 
+const crearCard = ({avatar, id, name}) => `<div class="card">
+<div class="card-content person-id="${id}"">
     <div class="media">
         <div class="media-left">
             <figure class="image is-48x48">
