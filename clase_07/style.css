@@ -1,0 +1,19 @@
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 1rem;
+}
+.container {
+    margin: 2rem auto;
+    height: auto;
+    width: 50%;
+}
+
+.card {
+    margin: .5rem;
+    cursor: pointer;
+}
+.card:hover {
+    background-color: rgb(241, 241, 241);
+}
