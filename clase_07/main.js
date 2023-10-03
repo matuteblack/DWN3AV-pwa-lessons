@@ -26,8 +26,9 @@ const traerDatosDeAPI = (endpoint) => {
             }))
     }
 
-const crearCard = ({avatar, id, name}) => `<div class="card">
-<div class="card-content person-id="${id}"">
+const crearCard = ({avatar, id, name}) =>
+`<div class="card" person-id="${id}">
+<div class="card-content">
     <div class="media">
         <div class="media-left">
             <figure class="image is-48x48">
@@ -53,4 +54,16 @@ const renderizarPagina = async () => {
     content.innerHTML = template
 }
 
-renderizarPagina();
+const renderizar = async () => {
+    await renderizarPagina();
+    const card = document.querySelectorAll('.card')
+    console.log(card);
+
+    card.forEach((persona) => {
+        persona.addEventListener('click', () => {
+            console.log(persona);
+        })
+    })
+}
+
+renderizar();
