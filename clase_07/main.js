@@ -60,8 +60,10 @@ const renderizar = async () => {
     console.log(card);
 
     card.forEach((persona) => {
-        persona.addEventListener('click', () => {
+        persona.addEventListener('click', (event) => {
             console.log(persona);
+            const id = event.currentTarget.getAttribute('person-id');
+            console.log(id);
         })
     })
 }
