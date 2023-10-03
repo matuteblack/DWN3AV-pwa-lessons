@@ -1,10 +1,4 @@
 // Funciones
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 const generarNombre = (person) => {
     return `${person.first_name} ${person.last_name}`
 }
@@ -23,17 +17,16 @@ const traerDatosDeAPI = (endpoint) => {
             .then(datos => datos.json())
             .then(({data}) => data)
             .then(results => results.map((persona) => {
-                const {email, avatar, ...resto} = persona;
+                const {email, avatar, id, ...resto} = persona;
                 return {
                     name: generarNombre(resto),
                     email,
-                    avatar
+                    avatar,
+                    id
                 }
             }))
     }
 
-const crearCard = ({avatar, email, name}) => `<div class="card">
-<div class="card-content">
     <div class="media">
         <div class="media-left">
             <figure class="image is-48x48">
