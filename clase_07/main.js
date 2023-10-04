@@ -26,6 +26,12 @@ const traerDatosDeAPI = (endpoint) => {
             }))
     }
 
+const traerPersonaDeAPI = (id) => {
+    return fetch(`https://reqres.in/api/users/${id}`)
+            .then(algo => algo.json())
+            .then(({data}) => data)
+}
+
 const crearCard = ({avatar, id, name}) =>
 `<div class="card" person-id="${id}">
 <div class="card-content">
@@ -57,13 +63,12 @@ const renderizarPagina = async () => {
 const renderizar = async () => {
     await renderizarPagina();
     const card = document.querySelectorAll('.card')
-    console.log(card);
 
     card.forEach((persona) => {
         persona.addEventListener('click', (event) => {
-            console.log(persona);
             const id = event.currentTarget.getAttribute('person-id');
-            console.log(id);
+            traerPersonaDeAPI(id)
+                .then((data) => console.log(data))
         })
     })
 }
