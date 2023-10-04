@@ -46,7 +46,11 @@ const crearCard = ({avatar, id, name}) =>
         </div>
     </div>
 </div>
-</div>`
+</div>`;
+
+const crearModal = () => {
+    
+}
 
 const content = document.getElementById('content');
 
