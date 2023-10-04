@@ -65,10 +65,10 @@ const renderizar = async () => {
     const card = document.querySelectorAll('.card')
 
     card.forEach((persona) => {
-        persona.addEventListener('click', (event) => {
+        persona.addEventListener('click', async (event) => {
             const id = event.currentTarget.getAttribute('person-id');
-            traerPersonaDeAPI(id)
-                .then((data) => console.log(data))
+            const persona = await traerPersonaDeAPI(id);
+            console.log(persona);
         })
     })
 }
