@@ -10,8 +10,15 @@
     <title>Clase 09</title>
 </head>
 <body>
-    
+    <div id="app">
 
-    <script src="main.js"></script>
+        <div v-for="fruta in frutas">
+            <h1>{{fruta.nombre}}</h1>
+            <p>{{fruta.cantidad}}</p>
+        </div>
+        
+        <script src="main.js"></script>
+
+    </div>
 </body>
 </html>
